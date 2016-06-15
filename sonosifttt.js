@@ -49,7 +49,7 @@ app.post('/xmlrpc.php', ifttt, function(req, res) {
     for (var i = 0; i < req.body.mt_keywords.length; i++) {
         var player = discovery.getPlayer(req.body.mt_keywords[i]);
         if (!player) continue;
-        var playerInfo = player.convertToSimple();
+        var playerInfo = player.toJSON();
         if (playerInfo.uuid != playerInfo.coordinator) {
             player = discovery.getPlayerByUUID(playerInfo.coordinator);
             if (!player) continue;
